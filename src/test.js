@@ -22,33 +22,13 @@ var TodoApp = React.createClass({
   render: function() {
     return (
       <div>
-        <h3>You have 10 seconds to type as many characters on the keyboard as you can. Go!</h3>
-        <Timer />
+        <h3>TODO</h3>
+        <TodoList items={this.state.items} />
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.onChange} value={this.state.text} />
           <button>{'Add #' + (this.state.items.length + 1)}</button>
         </form>
       </div>
-    );
-  }
-});
-
-var Timer = React.createClass({
-  getInitialState: function() {
-    return {secondsElapsed: 0};
-  },
-  tick: function() {
-    this.setState({secondsElapsed: this.state.secondsElapsed + 1});
-  },
-  componentDidMount: function() {
-    this.interval = setInterval(this.tick, 1000);
-  },
-  componentWillUnmount: function() {
-    clearInterval(this.interval);
-  },
-  render: function() {
-    return (
-      <div>Seconds Elapsed: {this.state.secondsElapsed}</div>
     );
   }
 });
