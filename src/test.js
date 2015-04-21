@@ -23,6 +23,7 @@ var TodoApp = React.createClass({
     return (
       <div>
         <h3>TODO</h3>
+        <Timer />
         <TodoList items={this.state.items} />
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.onChange} value={this.state.text} />
@@ -33,4 +34,4 @@ var TodoApp = React.createClass({
   }
 });
 
-React.render(<TodoApp />, mountNode);
+React.render(<TodoApp />, document.getElementById("test"));
