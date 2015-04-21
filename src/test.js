@@ -34,4 +34,4 @@ var TodoApp = React.createClass({
   }
 });
 
-React.render(<TodoApp />, document.getElementById("test"));
+window.reactRoot = React.render(<TodoApp />, document.getElementById("test"));
