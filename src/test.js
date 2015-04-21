@@ -1,17 +1,24 @@
-var Textbox = React.createClass({
+var Timer = React.createClass({
   getInitialState: function() {
-    return {value: 'Hello!'};
+    return {secondsElapsed: 0};
   },
-  handleChange: function(event) {
-    this.setState({value: event.target.value});
+  tick: function() {
+    this.setState({secondsElapsed: this.state.secondsElapsed + 1});
+  },
+  componentDidMount: function() {
+    this.interval = setInterval(this.tick, 1000);
+  },
+  componentWillUnmount: function() {
+    clearInterval(this.interval);
   },
   render: function() {
-    var value = this.state.value;
-    return <input type="text" value={value} onChange={this.handleChange} />;
+    return (
+      <div>Seconds Elapsed: {this.state.secondsElapsed}</div>
+    );
   }
 });
 
 React.render(
-  <Textbox />,
+  <Timer />,
   document.getElementById('example')
 );
