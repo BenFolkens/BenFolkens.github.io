@@ -1,33 +1,17 @@
-var Avatar = React.createClass({
+var Textbox = React.createClass({
+  getInitialState: function() {
+    return {value: 'Hello!'};
+  },
+  handleChange: function(event) {
+    this.setState({value: event.target.value});
+  },
   render: function() {
-    return (
-      <div>
-        <ProfilePic username={this.props.username} />
-        <ProfileLink username={this.props.username} />
-      </div>
-    );
-  }
-});
-
-var ProfilePic = React.createClass({
-  render: function() {
-    return (
-      <img src={'https://graph.facebook.com/' + this.props.username + '/picture'} />
-    );
-  }
-});
-
-var ProfileLink = React.createClass({
-  render: function() {
-    return (
-      <a href={'https://www.facebook.com/' + this.props.username}>
-        {this.props.username}
-      </a>
-    );
+    var value = this.state.value;
+    return <input type="text" value={value} onChange={this.handleChange} />;
   }
 });
 
 React.render(
-  <Avatar username="pwh" />,
+  <Textbox />,
   document.getElementById('example')
 );
