@@ -1,7 +1,4 @@
-var HelloMessage = React.createClass({
-  render: function() {
-    return <div>Hello {this.props.name}</div>;
-  }
-});
-
-React.render(<HelloMessage name="John" />, mountNode);
+React.render(
+  <h1>Hello, world!</h1>,
+  document.getElementById('example')
+);
