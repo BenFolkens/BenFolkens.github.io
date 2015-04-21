@@ -1,37 +1,22 @@
-var TodoList = React.createClass({
-  render: function() {
-    var createItem = function(itemText, index) {
-      return <li key={index + itemText}>{itemText}</li>;
-    };
-    return <ul>{this.props.items.map(createItem)}</ul>;
-  }
-});
-var TodoApp = React.createClass({
+
+var Timer = React.createClass({
   getInitialState: function() {
-    return {items: [], text: ''};
+    return {secondsElapsed: 0};
   },
-  onChange: function(e) {
-    this.setState({text: e.target.value});
+  tick: function() {
+    this.setState({secondsElapsed: this.state.secondsElapsed + 1});
   },
-  handleSubmit: function(e) {
-    e.preventDefault();
-    var nextItems = this.state.items.concat([this.state.text]);
-    var nextText = '';
-    this.setState({items: nextItems, text: nextText});
+  componentDidMount: function() {
+    this.interval = setInterval(this.tick, 1000);
+  },
+  componentWillUnmount: function() {
+    clearInterval(this.interval);
   },
   render: function() {
     return (
-      <div>
-        <h3>TODO</h3>
-        <Timer />
-        <TodoList items={this.state.items} />
-        <form onSubmit={this.handleSubmit}>
-          <input onChange={this.onChange} value={this.state.text} />
-          <button>{'Add #' + (this.state.items.length + 1)}</button>
-        </form>
-      </div>
+      <div>Seconds Elapsed: {this.state.secondsElapsed}</div>
     );
   }
 });
 
-window.reactRoot = React.render(<TodoApp />, document.getElementById("test"));
+window.reactRoot = React.render(<Timer />, document.getElementById("test"));
