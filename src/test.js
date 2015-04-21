@@ -6,7 +6,7 @@ var Timer = React.createClass({
     this.setState({secondsElapsed: this.state.secondsElapsed + 1});
   },
   componentDidMount: function() {
-    this.interval = setInterval(this.tick, 100);
+    this.interval = setInterval(this.tick, 10);
   },
   componentWillUnmount: function() {
     clearInterval(this.interval);
