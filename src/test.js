@@ -1,3 +1,29 @@
+var CharSubmit = React.createClass({
+  getInitialState: function() {
+    return {items: [], text: ''};
+  },
+  onChange: function(e) {
+    this.setState({text: e.target.value});
+  },
+  handleSubmit: function(e) {
+    e.preventDefault();
+    var nextItems = this.state.items.concat([this.state.text]);
+    var nextText = '';
+    this.setState({items: nextItems, text: nextText});
+  },
+  render: function() {
+    return (
+      <div>
+        <h3>You have 10 seconds to type as many words/characters as possible. Go!</h3>
+        <Timer />
+        <form onSubmit={this.handleSubmit}>
+          <input onChange={this.onChange} value={this.state.text} />
+          <button>{'Submit'}</button>
+        </form>
+      </div>
+    );
+  }
+});
 
 var Timer = React.createClass({
   getInitialState: function() {
@@ -19,4 +45,4 @@ var Timer = React.createClass({
   }
 });
 
-window.reactRoot = React.render(<Timer />, document.getElementById("test"));
+window.reactRoot = React.render(<Main />, document.getElementById("test"));
