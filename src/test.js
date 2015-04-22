@@ -45,4 +45,4 @@ var Timer = React.createClass({
   }
 });
 
-window.reactRoot = React.render(<Main />, document.getElementById("test"));
+window.reactRoot = React.render(<CharSubmit />, document.getElementById("test"));
