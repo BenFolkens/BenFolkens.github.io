@@ -27,7 +27,7 @@ var CharSubmit = React.createClass({
 
 var Timer = React.createClass({
   getInitialState: function() {
-    return {secondsElapsed: 0, button_press=false};
+    return {secondsElapsed: 0, button_press: false};
   },
   startTick: function() {
     this.setState({button_press: true});
