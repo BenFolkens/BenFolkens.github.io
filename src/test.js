@@ -30,13 +30,13 @@ var Timer = React.createClass({
     return {secondsElapsed: 0, button_press=false};
   },
   startTick: function() {
-    this.button_press=true;
+    this.setState({button_press: true});
   },
   tick: function() {
     this.setState({secondsElapsed: this.state.secondsElapsed + 1});
   },
   componentDidMount: function() {
-    if(this.button_press){
+    if(this.state.button_press){
       this.interval = setInterval(this.tick, 1000);
     }
   },
@@ -45,7 +45,7 @@ var Timer = React.createClass({
   },
   render: function() {
     return (
-      if(this.button_press){
+      if(this.state.button_press){
         <div>Seconds Elapsed: {this.state.secondsElapsed}</div>
       } else {
         <form onSubmit={this.startTick}>
