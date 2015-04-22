@@ -29,7 +29,8 @@ var Timer = React.createClass({
   getInitialState: function() {
     return {secondsElapsed: 0, button_press: false};
   },
-  startTick: function() {
+  startTick: function(e) {
+    e.preventDefault();
     this.setState({button_press: true});
   },
   tick: function() {
