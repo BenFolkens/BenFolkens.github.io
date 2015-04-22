@@ -14,7 +14,7 @@ var CharSubmit = React.createClass({
   render: function() {
     return (
       <div>
-        <h3>You have 10 seconds to type as many words/characters as possible. Ready? Go!</h3>
+        <h3>You have 10 seconds to type as many words/characters as possible. Ready? Press the 'Start' button to go!</h3>
         <Timer />
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.onChange} value={this.state.text} />
@@ -27,20 +27,31 @@ var CharSubmit = React.createClass({
 
 var Timer = React.createClass({
   getInitialState: function() {
-    return {secondsElapsed: 0};
+    return {secondsElapsed: 0, button_press=false};
+  },
+  startTick: function() {
+    this.button_press=true;
   },
   tick: function() {
     this.setState({secondsElapsed: this.state.secondsElapsed + 1});
   },
   componentDidMount: function() {
-    this.interval = setInterval(this.tick, 1000);
+    if(this.button_press){
+      this.interval = setInterval(this.tick, 1000);
+    }
   },
   componentWillUnmount: function() {
     clearInterval(this.interval);
   },
   render: function() {
     return (
-      <div>Seconds Elapsed: {this.state.secondsElapsed}</div>
+      if(this.button_press){
+        <div>Seconds Elapsed: {this.state.secondsElapsed}</div>
+      } else {
+        <form onSubmit={this.startTick}>
+          <button>{'Start Timer'}</button>
+        </form>
+      }
     );
   }
 });
