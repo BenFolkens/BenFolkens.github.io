@@ -46,13 +46,13 @@ var Timer = React.createClass({
   },
   render: function() {
     return (
-      if(this.state.button_press){
-        <div>Seconds Elapsed: {this.state.secondsElapsed}</div>
-      } else {
+      //if(this.state.button_press){
+      //  <div>Seconds Elapsed: {this.state.secondsElapsed}</div>
+      //} else {
         <form onSubmit={this.startTick}>
           <button>{'Start Timer'}</button>
         </form>
-      }
+      //}
     );
   }
 });
