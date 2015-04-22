@@ -14,7 +14,7 @@ var CharSubmit = React.createClass({
   render: function() {
     return (
       <div>
-        <h3>You have 10 seconds to type as many words/characters as possible. Go!</h3>
+        <h3>You have 10 seconds to type as many words/characters as possible. Ready? Go!</h3>
         <Timer />
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.onChange} value={this.state.text} />
