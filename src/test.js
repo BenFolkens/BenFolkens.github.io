@@ -34,12 +34,12 @@ var Timer = React.createClass({
     this.setState({button_press: true});
   },
   tick: function() {
-    this.setState({secondsElapsed: this.state.secondsElapsed + 1});
+  	if(this.state.button_press){
+    	this.setState({secondsElapsed: this.state.secondsElapsed + 1});
+    }
   },
   componentDidMount: function() {
-    if(this.state.button_press){
       this.interval = setInterval(this.tick, 1000);
-    }
   },
   componentWillUnmount: function() {
     clearInterval(this.interval);
